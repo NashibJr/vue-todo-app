@@ -1,4 +1,8 @@
 <template>
-  <h1>Hello world!!</h1>
+  <div>
+    <header>
+      <Header />
+    </header>
+  </div>
 </template>
 
