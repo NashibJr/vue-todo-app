@@ -21,6 +21,9 @@
           class="input-content"
         />
       </form>
+      <span :style="{display: 'flex', justifyContent: 'center'}">
+        <button type="button" class="button-content">add</button>
+      </span>
     </main>
   </div>
 </template>
@@ -40,5 +43,23 @@
     font-size: 1em;
     border: 1px solid rgba(0, 0, 0, .3);
     outline: none;
+  }
+
+  .button-content {
+    margin: 5px;
+    padding: 7px;
+    width: 50%;
+    font-family: century gothic;
+    font-size: 1em;
+    border: 1px solid rgba(0, 0, 0, .3);
+    outline: none;
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .button-content:hover {
+    opacity: .8;
   }
 </style>
