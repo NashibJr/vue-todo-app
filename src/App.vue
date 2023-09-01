@@ -1,15 +1,15 @@
 <script setup>
-  import { reactive } from 'vue';
+  import { reactive, ref } from 'vue';
 
   const state = reactive({
-    todo: '',
-    todos: [
-      { id: 1, body: 'Eating' },
-      { id: 2, body: 'Showering' },
-      { id: 3, body: 'sleeping' },
-    ],
-    completed: [],
+    todo: ''
   });
+
+  const todos = ref([
+      { id: 1, body: 'Eating', completed: false },
+      { id: 2, body: 'Showering', completed: false },
+      { id: 3, body: 'sleeping', completed: false },
+  ]);
   
 </script>
 
@@ -31,22 +31,7 @@
       </form>
       <div class="todos">
         <ul>
-          <li>
-            <span>
-              <input 
-                type="checkbox" 
-                id="completed" 
-                value="completed" 
-                v-model="state.completed" 
-              />
-              Eating
-            </span>
-            <v-icon 
-              name="ri-delete-bin-line" 
-              scale="1.3" 
-              class="icon"
-            />
-          </li>
+          <Todo :todos="{ todos }"/>
         </ul>
       </div>
     </main>
@@ -96,33 +81,5 @@
     flex-direction: column;
     flex-wrap: wrap;
     list-style-type: none;
-  }
-
-  .todos ul li {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px;
-    padding: 5px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, .3);
-  }
-
-  .todos ul li span {
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 2px;
-  }
-
-  .todos ul li span input {
-    margin-right: 10px;
-    width: 17px;
-    height: 17px;
-    transform: translateY(-1px);
-  }
-
-  .icon:hover {
-    color: red;
-    cursor: pointer;
   }
 </style>

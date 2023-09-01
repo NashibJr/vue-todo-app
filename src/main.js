@@ -3,9 +3,13 @@ import App from "./App.vue";
 import Header from "./components/Header.vue";
 import { RiDeleteBinLine } from "oh-vue-icons/icons";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
+import Todo from "./components/Todo.vue";
 
 addIcons(RiDeleteBinLine);
 
 const app = createApp(App);
-app.component("Header", Header).component("v-icon", OhVueIcon);
+app
+  .component("Header", Header)
+  .component("v-icon", OhVueIcon)
+  .component("Todo", Todo);
 app.mount("#app");
