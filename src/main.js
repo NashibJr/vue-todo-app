@@ -1,11 +1,11 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import Header from "./components/Header.vue";
-import { RiDeleteBinLine } from "oh-vue-icons/icons";
+import { RiDeleteBinLine, PxNotesDelete } from "oh-vue-icons/icons";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 import Todo from "./components/Todo.vue";
 
-addIcons(RiDeleteBinLine);
+addIcons(RiDeleteBinLine, PxNotesDelete);
 
 const app = createApp(App);
 app

@@ -5,11 +5,26 @@
     todo: '',
   });
 
-  const todos = ref([
-      { id: 1, body: 'Eating' },
-      { id: 2, body: 'Showering' },
-      { id: 3, body: 'sleeping' },
-  ]);
+  const todos = ref([]);
+
+  const handleAddTodo = () => {
+    try {
+      const exists = todos.value.find(
+        (todo) => todo?.body === state.todo
+      );
+      if (exists) {
+        alert(`\'${exists.body}\' is already a task!!`);
+      } else {
+        todos.value.push({
+        id: (Math.random().toFixed(6)) * 1000000,
+        body: state.todo
+      });
+      state.todo = '';
+      }
+    } catch (error) {
+      console.log(error, '>>>>');
+    }
+  };
   
 </script>
 
@@ -26,13 +41,16 @@
           class="input-content"
         />
         <span :style="{display: 'flex', justifyContent: 'center'}">
-          <button type="button" class="button-content">add</button>
+          <button type="button" class="button-content" @click="handleAddTodo">add</button>
         </span>
       </form>
-      <div class="todos">
+      <div class="todos" v-if="todos.length !== 0">
         <ul>
           <Todo :todos="{ todos }"/>
         </ul>
+      </div>
+      <div v-else :style="{ display: 'flex', justifyContent: 'center', marginTop: '5vh' }">
+        <v-icon name="px-notes-delete" scale="5" fill="black" />
       </div>
     </main>
   </div>
