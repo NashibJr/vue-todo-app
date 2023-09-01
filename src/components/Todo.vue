@@ -1,23 +1,32 @@
 <script setup>
+  import { ref } from 'vue';
+
   const props = defineProps(['todos']);
+
+  const completedTasks = ref([]);
+
   const handleDelete = (id) => {
     const todoToBeDeletedIndex = props.todos.todos.findIndex(
       (todo) => todo?.id === id
     );
     return props.todos.todos.splice(todoToBeDeletedIndex, 1);
   }
+
 </script>
 
 <template>
   <li v-for="todo in props.todos.todos" :key="todo.id">
-    <span>
+    <span class="span-content">
       <input 
         type="checkbox" 
-        id="{{ todo.completed }}" 
-        value="{{ todo.completed }}" 
-        v-model="todo.completed"
+        :id="todo.body" 
+        :value="todo.body" 
+        v-model="completedTasks"
       />
-      {{ todo.body }}
+      <span :style="{textDecoration: `${completedTasks?.includes(todo.body) 
+          ? 'line-through'
+        : 'none'
+        }`}">{{ todo.body }}</span>
     </span>
     <v-icon 
       name="ri-delete-bin-line" 
@@ -37,13 +46,13 @@
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .3);
   }
- li span {
+ li .span-content {
     width: 90%;
     display: flex;
     flex-wrap: wrap;
     padding-top: 2px;
   }
-  li span input {
+  li .span-content input {
     margin-right: 10px;
     width: 15px;
     height: 15px;

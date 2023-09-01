@@ -2,13 +2,13 @@
   import { reactive, ref } from 'vue';
 
   const state = reactive({
-    todo: ''
+    todo: '',
   });
 
   const todos = ref([
-      { id: 1, body: 'Eating', completed: false },
-      { id: 2, body: 'Showering', completed: false },
-      { id: 3, body: 'sleeping', completed: false },
+      { id: 1, body: 'Eating' },
+      { id: 2, body: 'Showering' },
+      { id: 3, body: 'sleeping' },
   ]);
   
 </script>
